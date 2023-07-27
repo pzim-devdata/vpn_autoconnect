@@ -9,7 +9,7 @@
 A script to automatically connect to the VPN at startup (if you lauch this script at startup) and reconnect  every 5 seconds if connection is lost.
 This updated version will also reconnect the wifi and ethernet card if used if connection is lost with a ping check
 
-![Presentation__gif](GifVPN)
+![Presentation__gif]https://github.com/pzim-devdata/Tools-for-Linux/blob/master/VPNautoconnect/GifVPN)
 
 
 ## How to install :
