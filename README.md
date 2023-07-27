@@ -34,7 +34,7 @@ chmod +x VPN/VPNautoconnect.sh
 
 If you want to connect to the VPN automatically at startup :
 
-  - Execute `Create_autostart_entry.py`
+  - Execute `python3 ~/VPN/Create_autostart_entry.py`
 
 or
 
