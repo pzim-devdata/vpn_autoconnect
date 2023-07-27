@@ -20,7 +20,7 @@ This updated version will also reconnect the wifi and ethernet card if used if c
 
 ```
 cd ~
-wget https://raw.githubusercontent.com/pzim-devdata/Tools-for-Debian/master/VPNautoconnect/VPNautoconnect.sh -P VPN
+git clone https://github.com/pzim-devdata/vpn_autoconnect.git VPN
 ```
 
 2. Then open your Terminal in the folder where "VPNautoconnect.sh" is located and type :
@@ -38,7 +38,7 @@ If you want to connect to the VPN automatically at startup :
 
 or
 
-   - Enter the address of the script "VPNautoconnect.sh" (which is `VPN/VPNautoconnect.sh`)  in your favorite startup tool : like "gnome-tweak-tool" for Gnome or other startup applications for other desktop environment : https://winaero.com/blog/manage-startup-apps-linux-mint/
+   - Enter the address of the script "VPNautoconnect.sh" (which is `VPN/VPNautoconnect.sh` in this exemple)  in your favorite startup tool : like "gnome-tweak-tool" for Gnome or other startup applications for other desktop environment : https://winaero.com/blog/manage-startup-apps-linux-mint/
 
 Reboot an enjoy ! :blush:
 
