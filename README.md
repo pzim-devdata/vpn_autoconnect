@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/pzim-devdata/vpn_autoconnect?style=plastic)](https://github.com/pzim-devdata/vpn_autoconnect/blob/master/LICENSE)   [![GitHub issues](https://img.shields.io/github/issues/pzim-devdata/vpn_autoconnect?style=plastic)](https://github.com/pzim-devdata/vpn_autoconnect/issues)    ![GitHub repo size](https://img.shields.io/github/repo-size/pzim-devdata/vpn_autoconnect?style=plastic)    ![GitHub All Releases](https://img.shields.io/github/downloads/pzim-devdata/vpn_autoconnect/total?style=plastic)    ![GitHub release (latest by date)](https://img.shields.io/github/v/release/pzim-devdata/vpn_autoconnect?style=plastic)    [![GitHub commits](https://img.shields.io/github/commits-since/pzim-devdata/vpn_autoconnect/v1.0.0.svg?style=plastic)](https://GitHub.com/pzim-devata/vpn_autoconnect/commit/)
 
-[Download :inbox_tray:](https://github.com/pzim-devdata/VPNautoconnect/releases/download/v1.0.0/VPNautoconnect.zip)
+[Download :inbox_tray:](https://github.com/pzim-devdata/vpn_autoconnect/releases/download/v1.0.0/VPNautoconnect.zip)
 
 ## Description :
 
