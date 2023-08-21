@@ -3,7 +3,7 @@
 #@pzim-devdata
 
 #This script is for automaticaly reconnecting to a specified VPN when it's disconnected or when connection to internet is lost thanks to a ping check it will reconnect all connections
-#Logs are stored in ~/Programmes/VPN/Autoconnect/.Vpnautoconnect.log
+#Logs are stored in /.Vpnautoconnect.log
 
 #NordVPN lowest load : curl --silent "https://api.nordvpn.com/v1/servers/recommendations?&filters%5C%5Bservers_technologies%5C%5D%5C%5Bidentifier%5C%5D=openvpn_udp&limit=2" | jq --raw-output --slurp ' .[] | sort_by(.load) | limit(2;.[]) | [.hostname, .load] | "\(.[0]): \(.[1])"' | tail -n 1 | cut -d ':' -f 1
 
