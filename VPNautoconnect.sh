@@ -38,6 +38,7 @@ VPN_NAME2="$(nmcli -t -f NAME,TYPE,DEVICE c s | grep vpn | grep ':$' | cut -d ':
 #It will automaticaly select the ETHERNET active connection(s) or if non active the non active ETHERNET connection sort by priority
 if [ -n "$(nmcli -t -f NAME,TYPE c s -a | grep "ethernet" | cut -d ':' -f1)" ]; then
     ETHERNET_CARD_NAMES="$(nmcli -t -f NAME,TYPE c s -a | grep "ethernet" | cut -d ':' -f1)"
+    ETHERNET=1
 else
     ETHERNET_CARD_NAMES="$(nmcli -t -f AUTOCONNECT-PRIORITY,NAME,TYPE,AUTOCONNECT,DEVICE c s | sort -n -r | grep -E "ethernet" | grep ':$'  | cut -d ':' -f2)"
 fi;
@@ -48,6 +49,7 @@ fi;
 if [ -n "$(nmcli -t -f NAME,TYPE c s -a | grep "wireless")" ]; then
     nmcli radio wifi on
     WIFI_CARD_NAMES="$(nmcli -t -f NAME,TYPE c s -a | grep "wireless" | cut -d ':' -f1)"
+    WIFI=1
 else
     nmcli radio wifi off
     WIFI_CARD_NAMES="$(nmcli -t -f AUTOCONNECT-PRIORITY,NAME,TYPE,AUTOCONNECT,DEVICE c s | sort -n -r | grep -E "wireless" | grep ':$' | cut -d ':' -f2)"
@@ -58,7 +60,7 @@ IFS=$'\n' read -ra ETHERNET_CON_NAMES <<< "$ETHERNET_CARD_NAMES"
 IFS=$'\n' read -ra WIFI_CON_NAMES <<< "$WIFI_CARD_NAMES"
 
 RECONNECT_ETHERNET='for con_name in "${ETHERNET_CON_NAMES[@]}"; do     nmcli con down "$con_name"; sleep 3; nmcli con up "$con_name"; done'
-RECONNECT_WIFI='nmcli radio wifi off; nmcli radio wifi on; sleep 3; for con_name in "${WIFI_CON_NAMES[@]}"; do     nmcli --wait 8 con up "$con_name" || true; done)'
+RECONNECT_WIFI='nmcli radio wifi off; nmcli radio wifi on; sleep 3; for con_name in "${WIFI_CON_NAMES[@]}"; do     nmcli --wait 8 con up "$con_name" || true; done'
 #eval $RECONNECT_ETHERNET
 
 #III.
@@ -102,10 +104,20 @@ do
             while [ "$connectivity" != "full" ] && [ $i -lt 11 ]; do 
                 echo "Aucune connexion internet. Essai $i/10";
                 sleep 4;
-                eval $RECONNECT_ETHERNET; 
+                if [[ $ETHERNET == 1 ]]; then
+                    eval $RECONNECT_ETHERNET;
+                fi
+                if [[ $WIFI == 1 ]]; then
+                    eval $RECONNECT_WIFI;
+                fi
                 connectivity=$(nmcli networking connectivity check);
                 if [[ $connectivity != "full" ]]; then
-                    eval $RECONNECT_WIFI; 
+                    if [[ $ETHERNET != 1 ]]; then
+                        eval $RECONNECT_ETHERNET;
+                    fi
+                    if [[ $WIFI != 1 ]]; then
+                        eval $RECONNECT_WIFI;
+                    fi 
                     connectivity=$(nmcli networking connectivity check)
                 fi;
                 i=$((i+1))
